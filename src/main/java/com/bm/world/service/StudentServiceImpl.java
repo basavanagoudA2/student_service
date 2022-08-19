@@ -1,19 +1,20 @@
 package com.bm.world.service;
 
-import com.bm.world.ApplicationConstants;
-import com.bm.world.exception.StudentNotFoundException;
-import com.bm.world.model.Student;
-import com.bm.world.model.request.StudentRequest;
-import com.bm.world.model.response.StudentResponse;
-import com.bm.world.repository.StudentRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
+import com.bm.world.ApplicationConstants;
+import com.bm.world.exception.StudentNotFoundException;
+import com.bm.world.model.Student;
+import com.bm.world.model.request.StudentRequest;
+import com.bm.world.model.response.StudentResponse;
+import com.bm.world.repository.StudentRepository;
 @Service
 public class StudentServiceImpl implements  StudentService{
     @Autowired
@@ -33,6 +34,7 @@ public class StudentServiceImpl implements  StudentService{
         String deleteMessage="";
         try {
             studentRepository.deleteById(studentId);
+            deleteMessage="Student deleted :"+studentId;
         }catch (DataAccessException e){
             throw new  StudentNotFoundException("student not found with this Id:"+studentId);
         }
@@ -41,7 +43,17 @@ public class StudentServiceImpl implements  StudentService{
 
     @Override
     public String updateStudent(StudentRequest studentRequest) {
-        return null;
+    	String updateMessgae=" ";
+    	Optional<Student> findById = studentRepository.findById(studentRequest.getStudentId());
+    		Student student = findById.get();
+			student.setEmailId(studentRequest.getEmailId());
+			student.setFirstName(studentRequest.getFirstName());
+			student.setMiddleName(studentRequest.getMiddleName());			
+			student.setLastName(studentRequest.getLastName());
+			student.setMobileNumber(studentRequest.getMobileNumber());
+			studentRepository.save(student);
+			updateMessgae="student updated with following ID: "+studentRequest.getStudentId();
+	        return updateMessgae;
     }
 
     @Override

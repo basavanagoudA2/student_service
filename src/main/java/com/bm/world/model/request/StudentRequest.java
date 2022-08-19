@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class StudentRequest {
+	private long studentId;
     @NotBlank(message = "first name is mandatory field")
     private String firstName;
 

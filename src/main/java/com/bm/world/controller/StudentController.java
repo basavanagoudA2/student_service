@@ -21,9 +21,15 @@ public class StudentController {
         String saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }
+    @PutMapping(value = ApplicationConstants.STUDENT_UPDATE,consumes = "application/json")
+    public ResponseEntity<String> updateStudent(@RequestBody StudentRequest studentRequest) {
+		String updateResponse = studentService.updateStudent(studentRequest);
+		return new ResponseEntity<String>(updateResponse,HttpStatus.OK);
+	}
     @DeleteMapping(value = ApplicationConstants.STUDENT_DELETE)
     public ResponseEntity<String> deleteStudent(@PathVariable Long studentId){
         String deleteResponse=studentService.deleteStudent(studentId);
         return  new ResponseEntity<>(deleteResponse,HttpStatus.OK);
     }
+    
 }

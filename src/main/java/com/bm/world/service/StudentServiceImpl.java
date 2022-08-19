@@ -8,6 +8,7 @@ import com.bm.world.model.response.StudentResponse;
 import com.bm.world.repository.StudentRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -31,12 +32,8 @@ public class StudentServiceImpl implements  StudentService{
     public String deleteStudent(Long studentId) {
         String deleteMessage="";
         try {
-            Student student=studentRepository.getReferenceById(studentId);
-           if(!ObjectUtils.isEmpty(student)){
-               studentRepository.delete(student);
-               deleteMessage="deleted student record with this"+studentId;
-           }
-        }catch (EntityNotFoundException e){
+            studentRepository.deleteById(studentId);
+        }catch (DataAccessException e){
             throw new  StudentNotFoundException("student not found with this Id:"+studentId);
         }
         return deleteMessage;

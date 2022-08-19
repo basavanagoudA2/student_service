@@ -14,5 +14,5 @@ public class ApplicationConstants {
     public static final String BASE_URL="/bm/std";
 
     public  static final String STUDENT_SAVE="/save";
-    public static final String STUDENT_DELETE="/{studentId}";
+    public static final String STUDENT_DELETE="/delete/{studentId}";
 }

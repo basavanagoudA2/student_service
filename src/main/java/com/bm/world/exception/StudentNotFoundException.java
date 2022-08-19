@@ -1,30 +1,37 @@
 package com.bm.world.exception;
 
-import lombok.AllArgsConstructor;
-
 import java.time.LocalTime;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class StudentNotFoundException extends RuntimeException{
-    String errorMessage;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	String errorMessage;
     LocalTime time;
+	public StudentNotFoundException() {
+		super();
+	}
+	public StudentNotFoundException(String message, Throwable cause, boolean enableSuppression,
+			boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
+	public StudentNotFoundException(String message, Throwable cause) {
+		super(message, cause);
+	}
+	public StudentNotFoundException(String message) {
+		this.errorMessage=message;
+		// TODO Auto-generated constructor stub
+	}
+	public StudentNotFoundException(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
 
-    public StudentNotFoundException() {
-    }
-
-    public StudentNotFoundException(String message) {
-        super(message);
-    }
-
-    public StudentNotFoundException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public StudentNotFoundException(Throwable cause) {
-        super(cause);
-    }
-
-    public StudentNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
+    
 }

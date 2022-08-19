@@ -16,4 +16,6 @@ public class ApplicationConstants {
     public  static final String STUDENT_SAVE="/save";
     public static final String STUDENT_UPDATE="/update";
     public static final String STUDENT_DELETE="/delete/{studentId}";
+    public static final String GET_ALL_STUDENTS="/getAll";
+    public static final String GET_STUDENT_BY_ID="/getStudentById/{studentId}";
 }

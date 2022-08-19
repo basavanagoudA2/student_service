@@ -1,5 +1,6 @@
 package com.bm.world.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -19,6 +20,8 @@ import com.bm.world.model.response.StudentResponse;
 import com.bm.world.repository.StudentRepository;
 @Service
 public class StudentServiceImpl implements  StudentService{
+	
+	List<StudentResponse> studentsList=new ArrayList<StudentResponse>();
     @Autowired
     public StudentRepository studentRepository;
     @Override
@@ -70,11 +73,32 @@ public class StudentServiceImpl implements  StudentService{
 
     @Override
     public List<StudentResponse> getAllStudents() {
-        return null;
+    	if (ObjectUtils.isEmpty(studentsList)) {
+    		List<Student> studentList1 = studentRepository.findAll();
+        	if (!ObjectUtils.isEmpty(studentList1)) {
+    			for (Student student : studentList1) {
+    				StudentResponse studentResponse=new StudentResponse();
+    				BeanUtils.copyProperties(student, studentResponse);
+    				studentsList.add(studentResponse);
+    			}
+    			studentList1.clear();
+    		}
+		}
+        return studentsList;
     }
 
     @Override
     public StudentResponse getStudentBasedOnStudentId(Long studentId) {
+    	if (!ObjectUtils.isEmpty(studentId)) {
+			Optional<Student> studentOptional = studentRepository.findById(studentId);
+			if (!ObjectUtils.isEmpty(studentOptional)) {
+				StudentResponse studentResponse=new StudentResponse();
+				BeanUtils.copyProperties(studentOptional.get(), studentResponse);
+				return studentResponse;
+			}else {
+				throw new StudentNotFoundException("Student not found with this StudentID: "+studentId);
+			}
+		}
         return null;
     }
 }

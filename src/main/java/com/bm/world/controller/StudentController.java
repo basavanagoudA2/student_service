@@ -27,7 +27,7 @@ public class StudentController {
     @PutMapping(value = ApplicationConstants.STUDENT_UPDATE,consumes = "application/json")
     public ResponseEntity<String> updateStudent(@RequestBody StudentRequest studentRequest) {
 		String updateResponse = studentService.updateStudent(studentRequest);
-		return new ResponseEntity<String>(updateResponse,HttpStatus.OK);
+		return new ResponseEntity<>(updateResponse,HttpStatus.OK);
 	}
     @DeleteMapping(value = ApplicationConstants.STUDENT_DELETE)
     public ResponseEntity<String> deleteStudent(@PathVariable Long studentId){
@@ -37,12 +37,12 @@ public class StudentController {
     @GetMapping(value = ApplicationConstants.GET_ALL_STUDENTS)
     public ResponseEntity<List<StudentResponse>> getAllStudents() {
     	List<StudentResponse> allStudents = studentService.getAllStudents();
-    	return new ResponseEntity<List<StudentResponse>>(allStudents,HttpStatus.OK);
+    	return new ResponseEntity<>(allStudents,HttpStatus.OK);
 	}
     @GetMapping(value = ApplicationConstants.GET_STUDENT_BY_ID)
     public ResponseEntity<StudentResponse> getStudentById(@PathVariable long studentId) {
     	StudentResponse studentResponse = studentService.getStudentBasedOnStudentId(studentId);
-		return new ResponseEntity<StudentResponse>(studentResponse,HttpStatus.OK);
+		return new ResponseEntity<>(studentResponse,HttpStatus.OK);
 	}
     
 }

@@ -1,9 +1,8 @@
 package com.bm.world.model.request;
 
-import lombok.Data;
-
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+
+import lombok.Data;
 
 @Data
 public class StudentRequest {

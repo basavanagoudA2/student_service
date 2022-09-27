@@ -1,10 +1,9 @@
 package com.bm.world.service;
 
+import java.util.List;
+
 import com.bm.world.model.request.StudentRequest;
 import com.bm.world.model.response.StudentResponse;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * This class is used for perform the operation student like sava and delete and update and get

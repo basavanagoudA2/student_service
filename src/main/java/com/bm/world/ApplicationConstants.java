@@ -4,7 +4,8 @@ package com.bm.world;
  * This class used for declare the constants for our student service project
  */
 public class ApplicationConstants {
-    // Declaring the Table Names contants
+	private ApplicationConstants() {}
+    // Declaring the Table Names contants	
     public static  final String STUDENT_DETAILS_TABLE_NAME="student_details";
 
     // messages Constants

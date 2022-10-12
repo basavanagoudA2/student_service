@@ -8,8 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.bm.world.ApplicationConstants;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = ApplicationConstants.STUDENT_DETAILS_TABLE_NAME)
 public class Student {
     @Id

@@ -1,12 +1,21 @@
+bm:
+  jwt:
+    secretKey: security
+    expireMs: 6000000
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/student_db
     username: root
     password: root
-  cloud:
-    config:
-      enabled: false
+  #cloud:
+    #config:
+     # enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 server:
   servlet:
     context-path: /internal
   port: 8282
+

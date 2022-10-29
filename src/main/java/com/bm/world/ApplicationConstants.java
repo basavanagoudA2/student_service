@@ -20,4 +20,7 @@ public class ApplicationConstants {
     public static final String GET_ALL_STUDENTS="/getAll";
     public static final String GET_STUDENT_BY_ID="/getStudentById/{studentId}";
     public static final String REGISTER = "/register";
+    public static final String LOGIN = "/signin";
+    public static final String Name="bm";
+
 }

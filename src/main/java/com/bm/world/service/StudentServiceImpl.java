@@ -75,7 +75,9 @@ public class StudentServiceImpl implements StudentService {
         String updateMessage;
             LOG.info("start the updating the record:[{}]", studentRequest);
                 Student student = studentRepository.findById(studentRequest.getStudentId()).
-                    orElseThrow(()->new StudentNotFoundException("student not found for update with StudentId: " + studentRequest.getStudentId()));
+                    orElseThrow(()->
+                                 LOG.info("completed the student record update");
+                                new StudentNotFoundException("student not found for update with StudentId: " + studentRequest.getStudentId()));
                 ObjectMapper.dtoToModel(studentRequest,student);
                 studentRepository.save(student);
                 LOG.debug("update is completed for this StudentId:[{}]", studentRequest.getStudentId());

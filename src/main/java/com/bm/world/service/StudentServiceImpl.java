@@ -1,9 +1,6 @@
 package com.bm.world.service;
-
 import java.util.ArrayList;
-
 import java.util.List;
-
 import com.bm.world.ObjectMapper;
 import com.bm.world.exception.StudentsDetailsNotFoundException;
 import org.apache.logging.log4j.LogManager;
@@ -103,6 +100,7 @@ public class StudentServiceImpl implements StudentService {
                 LOG.debug("fetching all the student details:[{}]", studentsList);
                 studentList1.clear();
             } else {
+                LOG.info("Fetching the all the student records completed");
                 throw new StudentsDetailsNotFoundException("student details not found");
             }
         }

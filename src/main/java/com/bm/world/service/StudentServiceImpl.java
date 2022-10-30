@@ -54,7 +54,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public String deleteStudent(Long studentId) {
         LOG.info("start the deleting the student records by studentId:[{}]", studentId);
-        String deleteMessage = "";
+        String deleteMessage = null;
         try {
             studentRepository.deleteById(studentId);
             deleteMessage = "Student deleted :" + studentId;

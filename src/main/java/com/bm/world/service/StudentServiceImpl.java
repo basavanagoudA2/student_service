@@ -1,23 +1,21 @@
 package com.bm.world.service;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
+import com.bm.world.ApplicationConstants;
 import com.bm.world.ObjectMapper;
+import com.bm.world.exception.StudentNotFoundException;
 import com.bm.world.exception.StudentsDetailsNotFoundException;
+import com.bm.world.model.Student;
+import com.bm.world.model.request.StudentRequest;
+import com.bm.world.model.response.StudentResponse;
+import com.bm.world.repository.StudentRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.bm.world.ApplicationConstants;
-import com.bm.world.exception.StudentNotFoundException;
-import com.bm.world.model.Student;
-import com.bm.world.model.request.StudentRequest;
-import com.bm.world.model.response.StudentResponse;
-import com.bm.world.repository.StudentRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author basavanagoud A
@@ -101,6 +99,7 @@ public class StudentServiceImpl implements StudentService {
                 LOG.debug("fetching all the student details:[{}]", studentsList);
                 studentList1.clear();
             } else {
+                LOG.error("student details not found");
                 throw new StudentsDetailsNotFoundException("student details not found");
             }
         }

@@ -1,6 +1,11 @@
 package com.bm.world.service;
+<<<<<<< HEAD
 
 import com.bm.world.ApplicationConstants;
+=======
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> 153fb961b1958c1110c641ffbc7bb99477659606
 import com.bm.world.ObjectMapper;
 import com.bm.world.exception.StudentNotFoundException;
 import com.bm.world.exception.StudentsDetailsNotFoundException;
@@ -73,7 +78,9 @@ public class StudentServiceImpl implements StudentService {
         String updateMessage;
             LOG.info("start the updating the record:[{}]", studentRequest);
                 Student student = studentRepository.findById(studentRequest.getStudentId()).
-                    orElseThrow(()->new StudentNotFoundException("student not found for update with StudentId: " + studentRequest.getStudentId()));
+                    orElseThrow(()->
+                                 LOG.info("completed the student record update");
+                                new StudentNotFoundException("student not found for update with StudentId: " + studentRequest.getStudentId()));
                 ObjectMapper.dtoToModel(studentRequest,student);
                 studentRepository.save(student);
                 LOG.debug("update is completed for this StudentId:[{}]", studentRequest.getStudentId());
@@ -100,6 +107,7 @@ public class StudentServiceImpl implements StudentService {
                 studentList1.clear();
             } else {
                 LOG.error("student details not found");
+                LOG.info("Fetching the all the student records completed");
                 throw new StudentsDetailsNotFoundException("student details not found");
             }
         }

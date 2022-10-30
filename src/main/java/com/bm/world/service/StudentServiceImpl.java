@@ -54,12 +54,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public String deleteStudent(Long studentId) {
         LOG.info("start the deleting the student records by studentId:[{}]", studentId);
-        String deleteMessage = "";
+        String deleteMessage = null;
         try {
             studentRepository.deleteById(studentId);
             deleteMessage = "Student deleted :" + studentId;
             LOG.info("student record is deleted for this studentId:[{}]", studentId);
         } catch (DataAccessException e) {
+            LOG.error("completed the delete student records");
             throw new StudentNotFoundException("student not found with this Id:" + studentId);
         }
         LOG.info("completed the delete student records");

@@ -60,6 +60,7 @@ public class StudentServiceImpl implements StudentService {
             deleteMessage = "Student deleted :" + studentId;
             LOG.info("student record is deleted for this studentId:[{}]", studentId);
         } catch (DataAccessException e) {
+            LOG.error("student not found with this Id:[{}]",studentId);
             throw new StudentNotFoundException("student not found with this Id:" + studentId);
         }
         LOG.info("completed the delete student records");

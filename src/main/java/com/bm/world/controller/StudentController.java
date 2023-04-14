@@ -20,6 +20,11 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    /**
+     * This method for saving the Student data
+     * @param studentRequest
+     * @return
+     */
     @PostMapping(value = ApplicationConstants.STUDENT_SAVE,consumes = "application/json")
     public ResponseEntity<String> saveStudent(@RequestBody @Valid StudentRequest studentRequest){
         String saveResponse=studentService.saveStudent(studentRequest);

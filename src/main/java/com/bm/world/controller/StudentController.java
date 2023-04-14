@@ -25,6 +25,12 @@ public class StudentController {
         String saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }
+
+    /**
+     * This method for update the student method
+     * @param studentRequest
+     * @return
+     */
     @PutMapping(value = ApplicationConstants.STUDENT_UPDATE,consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> updateStudent(@RequestBody StudentRequest studentRequest) {
 		String updateResponse = studentService.updateStudent(studentRequest);

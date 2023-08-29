@@ -35,6 +35,7 @@ public class StudentController {
     @CrossOrigin
     @PostMapping(value = ApplicationConstants.STUDENT_SAVE,consumes = "application/json")
     public ResponseEntity<SaveResponse> saveStudent(@RequestBody @Valid StudentRequest studentRequest){
+	    String data="";
         SaveResponse saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }

@@ -38,6 +38,7 @@ public class StudentController {
     public ResponseEntity<SaveResponse> saveStudent(@RequestBody @Valid StudentRequest studentRequest){
         Date date=new Date();
         String data="";
+	String data2="";
         SaveResponse saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }

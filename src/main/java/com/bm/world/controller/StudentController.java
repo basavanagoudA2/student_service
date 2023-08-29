@@ -39,6 +39,7 @@ public class StudentController {
         Date date=new Date();
         String data="";
         Integer mi=9;
+	    String data2="";
         SaveResponse saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }

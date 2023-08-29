@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -35,6 +36,7 @@ public class StudentController {
     @CrossOrigin
     @PostMapping(value = ApplicationConstants.STUDENT_SAVE,consumes = "application/json")
     public ResponseEntity<SaveResponse> saveStudent(@RequestBody @Valid StudentRequest studentRequest){
+        Date date=new Date();
         SaveResponse saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }

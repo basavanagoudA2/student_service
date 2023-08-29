@@ -2,6 +2,7 @@ package com.bm.world.controller;
 
 import com.bm.world.ApplicationConstants;
 import com.bm.world.model.request.StudentRequest;
+import com.bm.world.model.response.SaveResponse;
 import com.bm.world.model.response.StudentResponse;
 import com.bm.world.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,10 @@ public class StudentController {
      * @param studentRequest
      * @return
      */
+    @CrossOrigin
     @PostMapping(value = ApplicationConstants.STUDENT_SAVE,consumes = "application/json")
-    public ResponseEntity<String> saveStudent(@RequestBody @Valid StudentRequest studentRequest){
-        String saveResponse=studentService.saveStudent(studentRequest);
+    public ResponseEntity<SaveResponse> saveStudent(@RequestBody @Valid StudentRequest studentRequest){
+        SaveResponse saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }
     @PutMapping(value = ApplicationConstants.STUDENT_UPDATE,consumes = MediaType.APPLICATION_JSON_VALUE)

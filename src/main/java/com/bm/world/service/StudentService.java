@@ -3,6 +3,7 @@ package com.bm.world.service;
 import java.util.List;
 
 import com.bm.world.model.request.StudentRequest;
+import com.bm.world.model.response.SaveResponse;
 import com.bm.world.model.response.StudentResponse;
 
 /**
@@ -10,7 +11,7 @@ import com.bm.world.model.response.StudentResponse;
  */
 public interface StudentService {
 
-    public String saveStudent(StudentRequest studentRequest);
+    public SaveResponse saveStudent(StudentRequest studentRequest);
 
     public String deleteStudent(Long studentId);
 

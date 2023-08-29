@@ -9,6 +9,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 @Setter
 @Getter
+
+
+
 @Data
 public class SignUpRequest {
     @NotBlank

@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.bm.world.ObjectMapper;
 import com.bm.world.exception.StudentsDetailsNotFoundException;
+import com.bm.world.model.response.SaveResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -36,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
      * This method used for save the student details in the database
      */
     @Override
-    public String saveStudent(StudentRequest studentRequest) {
+    public SaveResponse saveStudent(StudentRequest studentRequest) {
         LOG.info("start the saving the student details:[{}]", studentRequest);
         Student student = new Student();
         if (!ObjectUtils.isEmpty(studentRequest)) {
@@ -45,7 +46,9 @@ public class StudentServiceImpl implements StudentService {
             LOG.debug("student details inserted completed:[{}]", student);
         }
         LOG.info("completed the insert student details");
-        return ApplicationConstants.STUDENT_SAVE_MESSAGE + student.getStudentId();
+        SaveResponse saveResponse=new SaveResponse();
+        saveResponse.setMsg(ApplicationConstants.STUDENT_SAVE_MESSAGE + student.getStudentId());
+        return saveResponse;
     }
 
     /**

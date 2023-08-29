@@ -37,6 +37,7 @@ public class StudentController {
     @PostMapping(value = ApplicationConstants.STUDENT_SAVE,consumes = "application/json")
     public ResponseEntity<SaveResponse> saveStudent(@RequestBody @Valid StudentRequest studentRequest){
         Date date=new Date();
+	  Date date2=new Date();
         SaveResponse saveResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(saveResponse, HttpStatus.OK);
     }

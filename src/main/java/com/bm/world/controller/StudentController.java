@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import javax.validation.Valid;
+/**
+    This controller for handling the student requests
+     */
 
 @RestController
 @RequestMapping(value = ApplicationConstants.BASE_URL)

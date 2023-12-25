@@ -67,6 +67,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body(new MessageResponse("EmailId already found! please use different"));
         }
         //create user Account
+        //added new comments
         User user = new User();
         ObjectMapper.dtoToModel(user, signUpRequest);
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));

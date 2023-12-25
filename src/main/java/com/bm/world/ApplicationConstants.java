@@ -22,5 +22,6 @@ public class ApplicationConstants {
     public static final String REGISTER = "/register";
     public static final String LOGIN = "/signin";
     public static final String Name="bm";
+    public static final String Name1="bm";
 
 }
